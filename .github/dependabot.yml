@@ -1,0 +1,79 @@
+version: 2
+
+updates:
+  - package-ecosystem: "pip"
+    directory: "/application-source"
+    target-branch: "main"
+    
+    schedule:
+      interval: "daily"
+      time: "15:25"
+      timezone: "Europe/London"
+
+    labels:
+      - "dependencies"
+
+    open-pull-requests-limit: 0
+
+    commit-message:
+      prefix: "vulfix"
+    
+    allow:
+      - dependency-name: "fastapi"
+      - dependency-name: "uvicorn"
+      - dependency-name: "flask"
+      - dependency-name: "requests"
+      - dependency-name: "httpx"
+      - dependency-name: "pandas"
+      - dependency-name: "numpy"
+      - dependency-name: "pydantic"
+      - dependency-name: "python-dotenv"
+      - dependency-name: "click"
+      - dependency-name: "typer"
+      - dependency-name: "tqdm"
+      - dependency-name: "rich"
+      - dependency-name: "loguru"
+      - dependency-name: "python-dateutil"
+      - dependency-name: "pyyaml"
+      - dependency-name: "orjson"
+      - dependency-name: "passlib"
+      - dependency-name: "bcrypt"
+      - dependency-name: "sqlalchemy"
+      - dependency-name: "pytest"
+      - dependency-name: "black"
+      - dependency-name: "ruff"
+      - dependency-name: "mypy"
+    
+    groups:
+      
+      low-risk:
+        applies-to: security-updates
+        patterns:
+          - "fastapi"
+          - "uvicorn"
+          - "flask"
+          - "requests"
+          - "httpx"
+          - "pandas"
+          - "numpy"
+          - "pydantic"
+          - "python-dotenv"
+          - "click"
+          - "typer"
+          - "tqdm"
+
+      high-risk:
+        applies-to: security-updates
+        patterns:
+          - "rich"
+          - "loguru"
+          - "python-dateutil"
+          - "pyyaml"
+          - "orjson"
+          - "passlib"
+          - "bcrypt"
+          - "sqlalchemy"
+          - "pytest"
+          - "black"
+          - "ruff"
+          - "mypy"
